@@ -1,0 +1,135 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h4 class="heading">Change Password Form</h4>
+      <form [formGroup]="changePasswordForm" (ngSubmit)="changePasswordFormSubmit()">
+        <div class="form-group">
+          <label for="oldPassword">Current Password:</label>
+          <input type="password" class="form-control" formControlName="oldPassword"/>
+          <div class="alert alert-danger"
+            *ngIf="changePasswordForm.get('oldPassword').hasError('required') && changePasswordForm.get('oldPassword').touched">
+            Password is required
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="newPassword">New Password:</label>
+            <input type="password" class="form-control" formControlName="newPassword"/>
+            <div class="alert alert-danger"
+              *ngIf="changePasswordForm.get('newPassword').hasError('minlength') && changePasswordForm.get('newPassword').touched">
+              Minimum 5 characters
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="newPassword">Repite Password:</label>
+          <input type="password" class="form-control" formControlName="repitePassword"/>
+          <div class="alert alert-danger"
+            *ngIf="changePasswordForm.get('repitePassword').hasError('incorrectPassword') && changePasswordForm.get('repitePassword').touched">
+            Repite password is incorrect
+          </div>
+      </div>
+        <button type="submit" class="btn btn-primary" [disabled]="changePasswordForm.invalid">Change</button>
+      </form>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form_main">
+        <h4 class="heading">Register Form</h4>
+        <div class="form">
+          <form [formGroup]="registerForm" (ngSubmit)="registerFormSubmit()">
+              <div class="form-group">
+                  <label for="username">Username:</label>
+                  <input type="text" class="form-control" formControlName="username"/>
+                  <div class="alert alert-danger"
+                    *ngIf="registerForm.get('username').hasError('required') && registerForm.get('username').touched">
+                    Username is required
+                  </div>
+                  <div class="alert alert-danger"
+                    *ngIf="registerForm.get('username').hasError('minlength') && registerForm.get('username').touched">
+                    Minimum 5 characters
+                  </div>
+                  <div class="alert alert-danger"
+                    *ngIf="registerForm.get('username').hasError('pattern') && registerForm.get('username').touched">
+                    Only letters is allowed
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username">Password:</label>
+                  <input type="password" class="form-control" formControlName="password"/>
+                  <div class="alert alert-danger"
+                    *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">
+                    Password is required
+                  </div>
+                  <div class="alert alert-danger"
+                    *ngIf="registerForm.get('password').hasError('minlength') && registerForm.get('password').touched">
+                    Minimum 5 characters
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="firstName">First Name:</label>
+                  <input type="text" class="form-control" formControlName="firstName"/>
+                  <div class="alert alert-danger"
+                    *ngIf="registerForm.get('firstName').hasError('required') && registerForm.get('firstName').touched">
+                    First Name is required
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name:</label>
+                  <input type="text" class="form-control" formControlName="lastName"/>
+                  <div class="alert alert-danger"
+                    *ngIf="registerForm.get('lastName').hasError('required') && registerForm.get('lastName').touched">
+                    Last Name is required
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" class="form-control" formControlName="email"/>
+                  <div class="alert alert-danger"
+                    *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').touched">
+                    Email is required
+                  </div>
+                  <div class="alert alert-danger"
+                    *ngIf="registerForm.get('email').hasError('email') && registerForm.get('email').touched">
+                    Email invalid
+                  </div>
+                </div>
+
+              <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Submit</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-12">
+      <h4 class="heading">Login Form</h4>
+      <form [formGroup]="loginForm" (ngSubmit)="loginFormSubmit()">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control" formControlName="username"/>
+          <div class="alert alert-danger"
+            *ngIf="loginForm.get('username').hasError('required') && loginForm.get('username').touched">
+            Username is required
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="username">Password:</label>
+            <input type="password" class="form-control" formControlName="password"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <div class="alert alert-danger"
+            *ngIf="loginError">
+            Incorrect username or password.
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <form [formGroup]="formDemo" (ngSubmit)="formSubmit()">
+
+        <div class="form-group">
+          <label for="username">Usuario:</label>
+          <input type="text" class="form-control" formControlName="username"/>
+          <div class="alert alert-danger" *ngIf="formDemo.get('username').hasError('required') && formDemo.get('username').touched">Indique un nombre de usuario</div>
+          <div class="alert alert-danger" *ngIf="formDemo.get('username').hasError('pattern') && formDemo.get('username').touched">Introduce solo letras</div>
+          <div class="alert alert-danger" *ngIf="formDemo.get('username').hasError('minlength') && formDemo.get('username').touched">Minimo 5 caracteres</div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Constraseña:</label>
+            <input type="password" class="form-control" formControlName="password"/>
+            <div class="alert alert-danger" *ngIf="formDemo.get('password').invalid && formDemo.get('password').touched">Introduce su contraseña</div>
+        </div>
+
+        <div class="form-group">
+            <label for="repitePassword">Repite Constraseña:</label>
+            <input type="password" class="form-control" formControlName="repitePassword"/>
+            <div class="alert alert-danger" *ngIf="formDemo.get('repitePassword').invalid && formDemo.get('repitePassword').touched">Introduce su contraseña</div>
+            <div class="alert alert-danger" *ngIf="formDemo.hasError('repitePasswordError') && formDemo.get('repitePassword').touched">Repita correctamente la contraseña</div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" formControlName="email"/>
+          <div class="alert alert-danger" *ngIf="formDemo.get('email').getError('required') && formDemo.get('email').touched">Indique un email</div>
+          <div class="alert alert-danger" *ngIf="formDemo.get('email').getError('email') && formDemo.get('email').touched">Formato de email incorrecto</div>
+          <div class="alert alert-danger" *ngIf="formDemo.get('email').getError('extensionError') && formDemo.get('email').touched">Extensión incorrecta (.com o .es)</div>
+        </div>
+
+        <div class="form-group">
+            <label for="fullname">Nombre:</label>
+            <input type="text" class="form-control" formControlName="fullname"/>
+            <div class="alert alert-danger" *ngIf="formDemo.get('fullname').invalid && formDemo.get('fullname').touched">Indique su nombre completo</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="formDemo.invalid">Enviar</button>
+
+      </form>
+    </div>
+  </div>
+</div>
